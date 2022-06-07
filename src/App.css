@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Satisfy&display=swap');
+.App{
+    box-sizing: border-box;
+  
+}
+.nav-head{ 
+    font-family: 'Satisfy', cursive;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
