@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
-
+import { AiOutlineMenuUnfold, AiOutlineMenuFold} from 'react-icons/ai';
 function Navber() {
+    const [open, setOpen] = useState(true)
   return (
     <div class="navbar text-neutral-content ">
   <div class="navbar-start">   
@@ -25,6 +26,11 @@ function Navber() {
       <li><Link to="/login">Login</Link></li>
      
     </ul>
+  </div>
+  <div className="ml-auto">
+  <label tabIndex="1" for="my_dairy" className="btn btn-ghost bg-base-100 lg:hidden text-[24px]" onClick={() => setOpen(!open)}>
+        {open ?<AiOutlineMenuUnfold/> :<AiOutlineMenuFold/>  } 
+      </label>
   </div>
 </div>
   )

@@ -1,8 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import Navber from './Components/Shared/Navber/Navber';
+import Dairy from './Components/Dairy/Dairy';
+import AddMemory from './Components/Dairy/AddMemory/AddMemory';
+import SeeMemory from './Components/Dairy/SeeMemory/SeeMemory';
 
 function App() {
   return (
@@ -10,6 +12,10 @@ function App() {
       <Navber/>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/dairy" element={<Dairy/>}>
+          <Route index element={<AddMemory/>}/>
+          <Route  path="seememory" element={<SeeMemory/>}/>
+        </Route>
         </Routes> 
     </div>
   );
