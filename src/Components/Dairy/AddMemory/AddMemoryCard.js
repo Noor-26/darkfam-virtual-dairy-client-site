@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
+import Button from '../../Shared/Button/Button';
 import './AddMemory.css'
 
 function AddMemoryCard() {
@@ -29,7 +30,7 @@ function AddMemoryCard() {
  {errors.memory && <span>This field is required</span>}   
  </div>
  
- <button  type='submit' className='btn btn-primary'>Add Memory</button>
+ <Button  type='submit'>Add Memory</Button>
      </form>
   )
 }

@@ -1,0 +1,47 @@
+.customBtn {
+    --color: #17C3B2;
+    font-family: inherit;
+    display: inline-block;
+    line-height: 2.5em;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid ;
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all .7s;
+
+   }
+   
+   .customBtn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+   
+   .customBtn:hover {
+    color: black;
+    border: 2px solid var(--color);
+   }
+   
+   .customBtn:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+   }
+   
+   .customBtn:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   
+   .customBtn:active:before {
+    background: #17C3B2;
+    transition: background 0s;
+   }
