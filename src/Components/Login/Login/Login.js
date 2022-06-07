@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error
+    ] = useSignInWithEmailAndPassword(auth);
     const onSubmit = data => {
-        console.log(data)
-       };
+        signInWithEmailAndPassword(data.email, data.password)
+    };
+    useEffect(() => {
+        if(error){
+            toast.error(error.message )
+        }
+    }, [error])
   return (
     <div className='flex h-[80vh] justify-center items-center '>
     <div className='card w-96 bg-base-100 shadow-xl p-4'>
