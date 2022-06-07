@@ -1,0 +1,21 @@
+.form{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.form-control{
+    margin: 15px 0;
+}
+.input{
+    width: 300px;
+    border: 2px solid ;
+
+}
+.heading{
+    margin-left: 35px;
+}
+.text_area{
+    height: 20vh;
+}
