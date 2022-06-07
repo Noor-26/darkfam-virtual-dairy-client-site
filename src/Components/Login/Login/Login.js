@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-       console.log(data)
-    };
-
+        console.log(data)
+       };
   return (
-    <div className='flex h-screen justify-center items-center '>
+    <div className='flex h-[80vh] justify-center items-center '>
     <div className='card w-96 bg-base-100 shadow-xl p-4'>
         <div className='card body p-4'>
             <p className='text-center font bold text-2xl'>Login</p>
@@ -59,7 +58,7 @@ function Login() {
               
                 <input type="submit" value="Login" className='btn btn-primary  w-full max-w-xs my-5' />
             </form>
-                    <p className='font-bold'>Don't have a account?<Link to="/register" className='text-primary font-medium'> Sign Up</Link> </p>
+                    <p className='font-bold tracking-[1px]'>Don't have a account?<Link to="/register" className='text-primary font-medium'> Sign Up</Link> </p>
          
         </div>
     </div>
