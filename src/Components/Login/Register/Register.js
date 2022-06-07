@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom'
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import  { toast } from 'react-toastify'
+import auth from '../../../firebase.init';
 
 function Register() {
   const { register, formState: { errors }, handleSubmit } = useForm();
-
-  const onSubmit = data => {
-   console.log(data)
-  };
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  useEffect(() => {
+    if(error || updateError){
+        toast.error(error.message || updateError.message )
+    }
+}, [error,updateError])
+const onSubmit = async data => {
+  await createUserWithEmailAndPassword(data.email, data.password)
+  await updateProfile({ displayName: data.name })
+};
+if(user){
+ console.log(user)
+}
 
   return (
     <div className='flex h-[80vh] justify-center items-center pt-16'>
