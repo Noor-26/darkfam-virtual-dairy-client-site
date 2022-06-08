@@ -1,30 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init'
+import Loading from '../../Shared/Loading/Loading'
 import SeeMemoryCard from './SeeMemoryCard'
-
+import axios from "axios";
 function SeeMemory() {
   const [user,loading] = useAuthState(auth)
-  const [memorys, setmemory] = useState([])
-  const [open, setOpen] = useState(false)
+ const [memorys, setmemorys] = useState([])
   useEffect(() => {
     
     if(user){
-      
-      fetch(`http://localhost:5000/memory?email=${user.email}`,{
-        method:'GET',
-                  headers:{
-                  'content-type': "application/json",
-                  'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                  },
-      })
-      .then(res => res.json())
-      .then(data=>{
-        setmemory(data)
-      })
+      axios.get(`http://localhost:5000/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
     }
-    
   }, [user,memorys])
+  
+  
+  if(loading  ){
+    return <Loading/>
+  }
   return (
     <div className='my-5'>
       <p className='text-3xl heading'>Read your precious Memorys</p>
