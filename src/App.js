@@ -9,6 +9,8 @@ import Login from './Components/Login/Login/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './Components/Login/Register/Register';
+import ReadMemory from './Components/Dairy/SeeMemory/ReadMemory';
+import RequireAuth from './Components/Shared/RequireAuth/RequireAuth';
 function App() {
   return (
     <div className="App">
@@ -17,9 +19,25 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/dairy" element={<Dairy/>}>
-          <Route index element={<AddMemory/>}/>
-          <Route  path="seememory" element={<SeeMemory/>}/>
+        <Route path="/dairy" element={
+        <RequireAuth>
+          <Dairy/>
+        </RequireAuth>
+        }>
+          <Route index element={
+           <RequireAuth>
+           <AddMemory/>
+         </RequireAuth>}/>
+          <Route  path="seememory" element={
+          <RequireAuth>
+          <SeeMemory/>
+        </RequireAuth>
+        }/>
+          <Route  path="memory/:id" element={
+          <RequireAuth>
+          <ReadMemory/>
+        </RequireAuth>
+         }/>
         </Route>
         </Routes> 
         <ToastContainer/>
