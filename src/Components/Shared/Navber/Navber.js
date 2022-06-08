@@ -12,17 +12,17 @@ function Navber() {
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/dairy">Dairy</Link></li>
-      <li><Link to="/dairy">Login</Link></li>
+      <li><Link to="/dairy">Diary</Link></li>
+      <li><Link to="/login">Login</Link></li>
      
       </ul>
     </div>
-    <Link to="/" class="btn btn-ghost normal-case text-xl nav-head">Darkfam-Virtual-Dairy</Link>
+    <Link to="/" class="btn btn-ghost normal-case text-xl nav-head">Darkfam-Virtual-Diary</Link>
   </div>
   <div class="navbar-end hidden lg:flex">
     <ul class="menu menu-horizontal p-0 pr-5 gap-x-5">
     <li><Link to="/">Home</Link></li>
-      <li><Link to="/dairy">Dairy</Link></li>
+      <li><Link to="/dairy">Diary</Link></li>
       <li><Link to="/login">Login</Link></li>
      
     </ul>

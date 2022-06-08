@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import  { toast } from 'react-toastify'
 import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import Loading from '../../Shared/Loading/Loading';
 
 function Register() {
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -24,8 +25,12 @@ const onSubmit = async data => {
   await createUserWithEmailAndPassword(data.email, data.password)
   await updateProfile({ displayName: data.name })
 };
+const navigate = useNavigate()
 if(user){
- console.log(user)
+ navigate('/')
+}
+if(loading | updating){
+    return <Loading/>
 }
 
   return (

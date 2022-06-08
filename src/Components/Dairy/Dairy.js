@@ -6,7 +6,7 @@ function Dairy() {
     <div class="drawer drawer-mobile h-auto ">
     <input id="my_dairy" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content ">
-    <p className='text-4xl m-3 capitalize'>your virtual dairy</p>
+    <p className='text-4xl m-3 capitalize'>your virtual diary</p>
   <Outlet/>
     
     </div> 

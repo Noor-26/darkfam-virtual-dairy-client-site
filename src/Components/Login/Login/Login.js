@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 function Login() {
@@ -17,11 +18,19 @@ function Login() {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
+const navigate = useNavigate()
+
     useEffect(() => {
         if(error){
             toast.error(error.message )
         }
     }, [error])
+    if(user){
+        navigate('/')
+    }
+    if(loading){
+        return <Loading/>
+    }
   return (
     <div className='flex h-[80vh] justify-center items-center '>
     <div className='card w-96 bg-base-100 shadow-xl p-4'>
