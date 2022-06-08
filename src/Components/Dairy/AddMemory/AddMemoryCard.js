@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import auth from '../../../firebase.init';
 import Button from '../../Shared/Button/Button';
 import './AddMemory.css'
 import moment  from 'moment';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import Loading from '../../Shared/Loading/Loading';
 
 function AddMemoryCard() {
-    const { register, handleSubmit, formState: { errors }} = useForm();
+    const { register, handleSubmit, formState: { errors },reset} = useForm();
     const currentTime = moment().format('MMMM Do YYYY, h:mm:ss a'); 
     const currentDay = moment().format('MMM Do YY'); 
     const [user] = useAuthState(auth)
+    const [loading,setLoading] = useState(false)
+
     const onSubmit = data => {
       const {title,memory} = data
       const sendData = {
@@ -22,9 +26,24 @@ function AddMemoryCard() {
       }
       
       // sending data to server
-      console.log(sendData)
+      setLoading(true)
+      fetch('http://localhost:5000/memory',{
+        method:'POST',
+        headers:{
+          'content-type':'application/json',
+        },
+        body:JSON.stringify(sendData)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        setLoading(false)
+        toast.success('Adding your memory done')
+        reset()
+      })
     }
-
+    if(loading){
+      return <Loading/>
+    }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className=' h-auto mt-10'>
     <div className="form-control w-full min-w-xs">
