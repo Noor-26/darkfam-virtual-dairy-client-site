@@ -4,9 +4,15 @@ import auth from '../../../firebase.init'
 import Loading from '../../Shared/Loading/Loading'
 import SeeMemoryCard from './SeeMemoryCard'
 import axios from "axios";
+import RemoveMemory from './RemoveMemory'
+import { toast } from 'react-toastify'
 function SeeMemory() {
   const [user,loading] = useAuthState(auth)
  const [memorys, setmemorys] = useState([])
+ const [open, setOpen] = useState(false)
+ const [memoryId,setMemoryId] = useState('')
+ const [dataLoading, setLoading] = useState(false)
+
   useEffect(() => {
     
     if(user){
@@ -15,7 +21,15 @@ function SeeMemory() {
   }, [user,memorys])
   
   
-  if(loading  ){
+  const removeMemory = () => {
+    setLoading(true)
+          axios.delete(`http://localhost:5000/memory/${memoryId}`).then(data => {
+            setLoading(false)
+               toast.success('successfully removed the memory')
+              })
+          setOpen(false)
+        }
+  if(loading | dataLoading  ){
     return <Loading/>
   }
   return (
@@ -24,9 +38,11 @@ function SeeMemory() {
       <div className='grid grid-cols-1 lg:grid-cols-2 mt-5 gap-5  px-4 '>
         {
           
-           memorys.map(memory=><SeeMemoryCard memoryContent={memory} />)
+           memorys.map(memory=><SeeMemoryCard memoryContent={memory} setOpen={setOpen} setMemoryId={setMemoryId} />)
         }
       </div>
+      {open && <RemoveMemory removeMemory={removeMemory}/> }
+
     </div>
   )
 }
