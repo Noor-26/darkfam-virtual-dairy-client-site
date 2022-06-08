@@ -31,7 +31,7 @@ function App() {
           <Route  path="seememory" element={
           <RequireAuth>
           <SeeMemory/>
-        </RequireAuth>
+        </RequireAuth> 
         }/>
           <Route  path="memory/:id" element={
           <RequireAuth>
