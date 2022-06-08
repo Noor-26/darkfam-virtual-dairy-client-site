@@ -5,10 +5,10 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  projectId: "darkfam-virtual-dairy",
+  projectId: process.env.REACT_APP_PROJECTID,  
   storageBucket: process.env.REACT_APP_STORAGEBUCKET, 
   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-  appId: "1:771090903302:web:f626f698990a0f8c352e87",
+  appId: process.env.REACT_APP_APPID,
   measurementId: process.env.REACT_APP_MEASUREMENTID
 };
 

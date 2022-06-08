@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import  { toast } from 'react-toastify'
 import auth from '../../../firebase.init';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 function Register() {
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -28,9 +29,9 @@ if(user){
 }
 
   return (
-    <div className='flex h-[80vh] justify-center items-center pt-16'>
-    <div className='card w-96 bg-base-100 shadow-xl p-4 my-10 '>
-        <div className='card body p-4'>
+    <div className='flex h-auto justify-center '>
+    <div className='card w-96 bg-base-100 shadow-xl p-4 my-5 '>
+        <div className='card-body p-4'>
             <p className='text-center font bold text-2xl'>Sign Up</p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -97,6 +98,7 @@ if(user){
             
            
         </div>
+        <SocialLogin/>
     </div>
     </div>
   )
