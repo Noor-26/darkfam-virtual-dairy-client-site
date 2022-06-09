@@ -7,6 +7,7 @@ import moment  from 'moment';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
+import axiosPrivate from '../../hooks/axiosPrivate';
 
 function AddMemoryCard() {
     const { register, handleSubmit, formState: { errors },reset} = useForm();
@@ -27,14 +28,7 @@ function AddMemoryCard() {
       
       // sending data to server
       setLoading(true)
-      fetch('http://localhost:5000/memory',{
-        method:'POST',
-        headers:{
-          'content-type':'application/json',
-        },
-        body:JSON.stringify(sendData)
-      })
-      .then(res => res.json())
+      axiosPrivate.post('http://localhost:5000/memory',sendData)
       .then(data =>{
         setLoading(false)
         toast.success('Adding your memory done')

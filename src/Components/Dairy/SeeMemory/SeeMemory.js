@@ -6,6 +6,7 @@ import SeeMemoryCard from './SeeMemoryCard'
 import axios from "axios";
 import RemoveMemory from './RemoveMemory'
 import { toast } from 'react-toastify'
+import axiosPrivate from '../../hooks/axiosPrivate'
 function SeeMemory() {
   const [user,loading] = useAuthState(auth)
  const [memorys, setmemorys] = useState([])
@@ -16,14 +17,14 @@ function SeeMemory() {
   useEffect(() => {
     
     if(user){
-      axios.get(`http://localhost:5000/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
+      axiosPrivate.get(`http://localhost:5000/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
     }
   }, [user,memorys])
   
   
   const removeMemory = () => {
     setLoading(true)
-          axios.delete(`http://localhost:5000/memory/${memoryId}`).then(data => {
+          axiosPrivate.delete(`http://localhost:5000/memory/${memoryId}`).then(data => {
             setLoading(false)
                toast.success('successfully removed the memory')
               })

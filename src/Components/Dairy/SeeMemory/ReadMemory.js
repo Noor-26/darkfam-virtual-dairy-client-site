@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import axiosPrivate from '../../hooks/axiosPrivate'
 import Loading from '../../Shared/Loading/Loading'
 
 function ReadMemory() {
@@ -10,7 +11,7 @@ function ReadMemory() {
     const {current_time,memory,title,userName} = showMemory
     useEffect(() => {
         setLoading(true)
-      axios.get(`http://localhost:5000/memory/${id}`).then(data => setshowMemory(data.data))
+      axiosPrivate.get(`http://localhost:5000/memory/${id}`).then(data => setshowMemory(data.data))
       setLoading(false)
     }, [])
     if(dataLoading){

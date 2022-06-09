@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-function useToken({user}) {
+function useToken (user) {
+    console.log(user)
     const [token, setToken] = useState('')
     useEffect(() => {
         const email = user?.user?.email
@@ -11,7 +12,7 @@ function useToken({user}) {
           }
           if(email){
               localStorage.removeItem('accessToken')
-              fetch(`http://localhost:5000//users/${email}`,{
+              fetch(`http://localhost:5000/users/${email}`,{
                   method:'PUT',
                   headers:{
                   'content-type': "application/json",
