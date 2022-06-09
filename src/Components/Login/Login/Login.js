@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import useToken from '../../Shared/useToken/useToken';
 
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,15 +19,18 @@ function Login() {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
-const navigate = useNavigate()
+    const [token] = useToken(user)
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || '/'
 
     useEffect(() => {
         if(error){
             toast.error(error.message )
         }
     }, [error])
-    if(user){
-        navigate('/')
+    if(token){
+        navigate(from,{replace:true})
     }
     if(loading){
         return <Loading/>

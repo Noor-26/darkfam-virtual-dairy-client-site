@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import  { toast } from 'react-toastify'
 import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../Shared/useToken/useToken';
 
 function Register() {
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -16,6 +17,10 @@ function Register() {
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [token] = useToken(user)
+  const navigate = useNavigate()
+  const location = useLocation()
+  let from = location.state?.from?.pathname || '/'
   useEffect(() => {
     if(error || updateError){
         toast.error(error.message || updateError.message )
@@ -25,10 +30,10 @@ const onSubmit = async data => {
   await createUserWithEmailAndPassword(data.email, data.password)
   await updateProfile({ displayName: data.name })
 };
-const navigate = useNavigate()
-if(user){
- navigate('/')
-}
+
+if(token){
+    navigate(from,{replace:true})
+  }
 if(loading | updating){
     return <Loading/>
 }
