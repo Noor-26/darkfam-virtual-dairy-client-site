@@ -12,7 +12,7 @@ function useToken (user) {
           }
           if(email){
               localStorage.removeItem('accessToken')
-              fetch(`http://localhost:5000/users/${email}`,{
+              fetch(`https://stormy-brook-75292.herokuapp.com/users/${email}`,{
                   method:'PUT',
                   headers:{
                   'content-type': "application/json",

@@ -17,14 +17,14 @@ function SeeMemory() {
   useEffect(() => {
     
     if(user){
-      axiosPrivate.get(`http://localhost:5000/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
+      axiosPrivate.get(`https://stormy-brook-75292.herokuapp.com/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
     }
   }, [user,memorys])
   
   
   const removeMemory = () => {
     setLoading(true)
-          axiosPrivate.delete(`http://localhost:5000/memory/${memoryId}`).then(data => {
+          axiosPrivate.delete(`https://stormy-brook-75292.herokuapp.com/memory/${memoryId}`).then(data => {
             setLoading(false)
                toast.success('successfully removed the memory')
               })

@@ -28,7 +28,7 @@ function AddMemoryCard() {
       
       // sending data to server
       setLoading(true)
-      axiosPrivate.post('http://localhost:5000/memory',sendData)
+      axiosPrivate.post('https://stormy-brook-75292.herokuapp.com/memory',sendData)
       .then(data =>{
         setLoading(false)
         toast.success('Adding your memory done')

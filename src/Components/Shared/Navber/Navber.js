@@ -22,7 +22,7 @@ function Navber() {
       <li><Link to="/">Home</Link></li>
       <li><Link to="/dairy">Diary</Link></li>
       {user ? <>
-      <p className='btn btn-ghost' onClick={logOut}>{user.displayName}</p>
+        <p className=' mx-auto my-2' > Hi, {user.displayName}</p>
       <button className='btn btn-primary' onClick={logOut}>Sign out</button>
       </>
       :<li><Link to="/login">Login</Link></li>
@@ -37,7 +37,7 @@ function Navber() {
     <li><Link to="/">Home</Link></li>
       <li><Link to="/dairy">Diary</Link></li>
       {user ? <>
-      <p className='btn btn-ghost' onClick={logOut}>{user.displayName}</p>
+      <p className='my-auto' >{user.displayName}</p>
       <button className='btn btn-primary' onClick={logOut}>Sign out</button>
       </>
       :<li><Link to="/login">Login</Link></li>

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const axiosPrivate = axios.create({});
