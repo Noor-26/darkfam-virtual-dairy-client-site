@@ -5,7 +5,6 @@ import auth from "../../firebase.init";
 const axiosPrivate = axios.create({});
 
 axiosPrivate.interceptors.request.use(function (config) {
-    // Do something before request is sent
     if(!config.headers.authorization){
         config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`
     }
@@ -14,7 +13,7 @@ axiosPrivate.interceptors.request.use(function (config) {
     return Promise.reject(error);
   });
 
-// Add a response interceptor
+// Adding response interceptor
 axiosPrivate.interceptors.response.use(function (response) {
     return response;
   }, function (error) {

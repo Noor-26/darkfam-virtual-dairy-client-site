@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Belgrano&family=Caveat:wght@500&family=Courgette&family=Dancing+Script:wght@500&family=Pacifico&display=swap');
 .customBtn {
-    --color: #c42d67;
+    --color: #17C3B2;
     font-family: 'Belgrano', serif;
+    font-family: inherit;
     display: inline-block;
     position: relative;
     overflow: hidden; 
@@ -10,7 +11,8 @@
     z-index: 1;
     font-size: 15px;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     transition: all .7s;
 
    }

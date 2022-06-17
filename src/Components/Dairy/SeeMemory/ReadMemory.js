@@ -26,7 +26,7 @@ function ReadMemory() {
         <p>Hi, {userName}</p>
         <p className='text-[13px] my-1 '>Date : {current_time}</p>
         <p>Title : {title}</p>
-        <p className='break-words'>{memory}</p>
+        <p className='break-words memory'>{memory}</p>
        
     </div>
      </div>

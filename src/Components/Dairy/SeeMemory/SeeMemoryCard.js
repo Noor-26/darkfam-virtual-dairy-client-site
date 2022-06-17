@@ -18,14 +18,14 @@ function SeeMemoryCard({memoryContent,setOpen,setMemoryId}) {
 
   }
   return (
-    <div class="memory_card w-80  lg:w-96 mx-auto">
-  <div class="memory_card2 w-80 lg:w-96 p-5">
+    <div className="memory_card w-80  lg:w-96 mx-auto">
+  <div className="memory_card2 w-80 lg:w-96 p-5">
       <p className='text-[13px] '>Date : {current_time}</p>
       <p>Title : {title}</p>
       <div className='text-center'>
       <p className=' mt-2'>{memoryText}</p>
       <div className='flex gap-4 justify-center my-4'>
-      <label for="remove_memory" class=" btn pt-3  modal-button customBtn"  onClick={sendId} >Delete</label> 
+      <label htmlFor="remove_memory" className=" btn pt-4  modal-button customBtn"  onClick={sendId} >Delete</label> 
      <Link to={`/dairy/memory/${_id}`}> <Button className='btn mt-3 btn-sm'>Read</Button></Link>
       </div>
 

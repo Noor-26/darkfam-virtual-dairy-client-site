@@ -15,6 +15,7 @@ function SeeMemory() {
  const [dataLoading, setLoading] = useState(false)
 
   useEffect(() => {
+  
     
     if(user){
       axiosPrivate.get(`https://stormy-brook-75292.herokuapp.com/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
@@ -25,9 +26,9 @@ function SeeMemory() {
   const removeMemory = () => {
     setLoading(true)
           axiosPrivate.delete(`https://stormy-brook-75292.herokuapp.com/memory/${memoryId}`).then(data => {
-            setLoading(false)
-               toast.success('successfully removed the memory')
-              })
+            toast.success('successfully removed the memory')
+          })
+          setLoading(false)
           setOpen(false)
         }
   if(loading | dataLoading  ){
@@ -35,11 +36,11 @@ function SeeMemory() {
   }
   return (
     <div className='my-5'>
-      <p className='text-3xl heading'>Read your precious Memorys</p>
+      <p className='text-2xl lg:text-3xl heading'>Read your precious Memorys</p>
       <div className='grid grid-cols-1 lg:grid-cols-2 mt-5 gap-5  px-4 '>
         {
           
-           memorys.map(memory=><SeeMemoryCard memoryContent={memory} setOpen={setOpen} setMemoryId={setMemoryId} />)
+           memorys.map(memory=><SeeMemoryCard memoryContent={memory} key={memory._id} setOpen={setOpen} setMemoryId={setMemoryId} />)
         }
       </div>
       {open && <RemoveMemory removeMemory={removeMemory}/> }
