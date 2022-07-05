@@ -10,6 +10,8 @@ function SeeMemoryCard({memoryContent,setOpen,setMemoryId}) {
     setMemoryId(_id)
   }
   let memoryText;
+  let titleText;
+  // for memory text
   if(memory.length > 25){
     memoryText = <p className=' mt-2'>{memory.slice(0,25)}...</p>
   }
@@ -17,11 +19,20 @@ function SeeMemoryCard({memoryContent,setOpen,setMemoryId}) {
     memoryText = <p className=' mt-2'>{memory}</p>
 
   }
+
+  // for title text
+  if(title.length > 25){
+    titleText = <span className=' mt-2'>{title.slice(0,25)}...</span>
+  }
+  else{
+    titleText = <span className=' mt-2'>{title}</span>
+  }
+
   return (
     <div className="memory_card w-80  lg:w-96 mx-auto">
   <div className="memory_card2 w-80 lg:w-96 p-5">
       <p className='text-[13px] '>Date : {current_time}</p>
-      <p>Title : {title}</p>
+      <p>Title : {titleText}</p>
       <div className='text-center'>
       <p className=' mt-2'>{memoryText}</p>
       <div className='flex gap-4 justify-center my-4'>
