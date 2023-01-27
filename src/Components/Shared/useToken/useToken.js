@@ -12,7 +12,7 @@ function useToken (user) {
           }
           if(email){
               localStorage.removeItem('accessToken')
-              fetch(`https://stormy-brook-75292.herokuapp.com/users/${email}`,{
+              fetch(`https://darkfam-virtual-dairy.onrender.com/users/${email}`,{
                   method:'PUT',
                   headers:{
                   'content-type': "application/json",

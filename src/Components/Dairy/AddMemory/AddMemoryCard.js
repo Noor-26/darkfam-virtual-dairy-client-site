@@ -28,7 +28,7 @@ function AddMemoryCard() {
       
       // sending data to server
       setLoading(true)
-      axiosPrivate.post('https://stormy-brook-75292.herokuapp.com/memory',sendData)
+      axiosPrivate.post('https://darkfam-virtual-dairy.onrender.com/memory',sendData)
       .then(data =>{
         setLoading(false)
         toast.success('Adding your memory done')

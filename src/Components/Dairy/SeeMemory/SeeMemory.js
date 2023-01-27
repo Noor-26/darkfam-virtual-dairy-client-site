@@ -18,14 +18,14 @@ function SeeMemory() {
   
     
     if(user){
-      axiosPrivate.get(`https://stormy-brook-75292.herokuapp.com/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
+      axiosPrivate.get(`https://darkfam-virtual-dairy.onrender.com/memory?email=${user.email}`).then(memory => setmemorys(memory.data))
     }
   }, [user,memorys])
   
   
   const removeMemory = () => {
     setLoading(true)
-          axiosPrivate.delete(`https://stormy-brook-75292.herokuapp.com/memory/${memoryId}`).then(data => {
+          axiosPrivate.delete(`https://darkfam-virtual-dairy.onrender.com/memory/${memoryId}`).then(data => {
             toast.success('successfully removed the memory')
           })
           setLoading(false)
